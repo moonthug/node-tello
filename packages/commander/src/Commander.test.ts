@@ -18,11 +18,11 @@ describe('Commander', () => {
   describe('constructor', () => {
     it('should set the options passed to it', () => {
       const commander = new Commander({
-        address: '127.0.0.1',
-        port: 1234,
+        remoteAddress: '127.0.0.1',
+        remotePort: 1234,
       });
-      expect(commander.address).to.eql('127.0.0.1');
-      expect(commander.port).to.eql(1234);
+      expect(commander.remoteAddress).to.eql('127.0.0.1');
+      expect(commander.remotePort).to.eql(1234);
     });
   });
 
@@ -35,8 +35,8 @@ describe('Commander', () => {
 
     beforeEach(() => {
       commander = new Commander({
-        address: '127.0.0.1',
-        port: 1234,
+        remoteAddress: '127.0.0.1',
+        remotePort: 1234,
       });
     });
 
@@ -85,8 +85,8 @@ describe('Commander', () => {
 
     beforeEach(() => {
       commander = new Commander({
-        address: '127.0.0.1',
-        port: 1234,
+        remoteAddress: '127.0.0.1',
+        remotePort: 1234,
       });
       // @ts-ignore
       sinon.stub(commander, '_bindSocket');
@@ -111,8 +111,8 @@ describe('Commander', () => {
 
     beforeEach(() => {
       commander = new Commander({
-        address: '127.0.0.1',
-        port: 1234,
+        remoteAddress: '127.0.0.1',
+        remotePort: 1234,
       });
       // @ts-ignore
       sinon.stub(commander, '_bindSocket');
@@ -138,8 +138,8 @@ describe('Commander', () => {
 
     beforeEach(() => {
       commander = new Commander({
-        address: '127.0.0.1',
-        port: 1234,
+        remoteAddress: '127.0.0.1',
+        remotePort: 1234,
       });
       // @ts-ignore
       sinon.stub(commander, '_bindSocket');

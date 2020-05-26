@@ -1,7 +1,5 @@
 import { EventEmitter } from 'events';
-import { Commander } from '@node-tello/commander';
-import { ControlCommand } from '@node-tello/commander/dist/enums/ControlCommand';
-import { ReadCommand, SetCommand } from '@node-tello/commander/dist';
+import { Commander, ControlCommand, ReadCommand, SetCommand } from '@node-tello/commander';
 
 export interface IDroneOptions {
   address: string;
@@ -24,8 +22,8 @@ export class Drone extends EventEmitter {
     super();
 
     this.commander = new Commander({
-      address: options.address,
-      port: options.commandPort
+      remoteAddress: options.address,
+      remotePort: options.commandPort
     });
 
     this.commander.initialise();
