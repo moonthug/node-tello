@@ -11,7 +11,6 @@ export interface IMockCommandServerOptions {
  *
  */
 export class MockCommandServer {
-
   /**
    *
    */
@@ -115,4 +114,11 @@ export class MockCommandServer {
 
     this._socket.bind(this._port);
   }
+
+  /**
+   *
+   */
+  get port(): number { return this._port; }
+  get mocks(): Map<string, string> { return this._mocks; }
+  get initialised(): boolean { return this._initialised; }
 }
