@@ -1,0 +1,33 @@
+{
+  "name": "@node-tello/mock-command-server",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Alex Coulcher <alex@polyglot.rodeo>",
+  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/mock-command-server#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonthug/node-tello.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moonthug/node-tello/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf ./dist",
+    "lint": "eslint . --ext .ts",
+    "start": "node dist/index.js",
+    "start:debug": "ts-node src/index.ts",
+    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {}
+}

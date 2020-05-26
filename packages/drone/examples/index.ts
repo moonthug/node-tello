@@ -9,6 +9,8 @@ const main = async () => {
     commandPort: 8889,
     statePort: 8890
   });
+
+  drone.takeoff();
 };
 
 

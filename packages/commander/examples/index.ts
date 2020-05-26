@@ -3,11 +3,17 @@ import { ReadCommand } from '../src/enums/ReadCommand';
 
 
 const main = async () => {
-  const commander = new Commander({ address: '192.168.1.10', port: 8889 });
+  const commander = new Commander({
+    localPort: 18889,
+    remoteAddress: '127.0.0.1',
+    remotePort: 8889
+  });
   commander.initialise();
-  const batteryLevel = await commander.read(ReadCommand.battery);
+  setInterval(async () => {
+    const batteryLevel = await commander.read(ReadCommand.battery);
 
-  console.log('batteryLevel');
+    console.log(batteryLevel);
+  }, 5000);
 };
 
 

@@ -1,4 +1,20 @@
 export enum ControlCommand {
   takeoff = "takeoff",
-  land = "land"
+  land = "land",
+  streamon = "streamon",
+  streamoff = "streamoff",
+  emergency = "emergency",
+  up = "up",
+  down = "down",
+  left = "left",
+  right = "right",
+  forward = "forward",
+  back = "back",
+  cw = "cw",
+  ccw = "ccw",
+  flip = "flip",
+  go = "go",
+  stop = "stop",
+  curve = "curve",
+  jump = "jump",
 }
