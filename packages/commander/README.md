@@ -1,11 +1,11 @@
-# `@node-tello/drone`
+# `@node-tello/commander`
 
 > TODO: description
 
 ## Usage
 
 ```
-import { Drone } from '@node-tello/drone';
+import { Commander } from '@node-tello/commander';
 
 // TODO: DEMONSTRATE API
 ```

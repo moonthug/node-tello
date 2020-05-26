@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
-  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/drone#readme",
+  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/commander#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "publishConfig": {
