@@ -30,6 +30,8 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@node-tello/commander": "^0.0.0"
+    "@node-tello/cadet": "^0.0.0",
+    "@node-tello/commander": "^0.0.0",
+    "@node-tello/ensign": "^0.0.0"
   }
 }

@@ -1,4 +1,4 @@
-export { ReadCommand } from './enums/ReadCommand';
-export { SetCommand } from './enums/SetCommand';
-export { ControlCommand } from './enums/ControlCommand';
+export { ReadCommandEnum } from './enums/ReadCommand';
+export { SetCommandEnum } from './enums/SetCommand';
+export { ControlCommandEnum } from './enums/ControlCommand';
 export { Commander } from './Commander';

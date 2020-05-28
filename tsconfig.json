@@ -15,7 +15,7 @@
     "paths": {
       "*": [
         "node_modules/*",
-        "types/*"
+        "typings/*"
       ]
     }
   },

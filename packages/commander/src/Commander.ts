@@ -1,11 +1,12 @@
 import { EventEmitter } from 'events';
 import { createSocket, Socket } from 'dgram';
 
-import { CommanderEvent } from './enums/CommanderEvent';
-import { ReadCommand } from './enums/ReadCommand';
-import { SetCommand } from './enums/SetCommand';
-import { ControlCommand } from './enums/ControlCommand';
-import { Command } from './types/Command';
+import { Command } from './Command';
+import { CommanderEventEnum } from './enums/CommanderEvent';
+import { ReadCommandEnum } from './enums/ReadCommand';
+import { SetCommandEnum } from './enums/SetCommand';
+import { ControlCommandEnum } from './enums/ControlCommand';
+import { CommandType } from './types/CommandType';
 
 /**
  *
@@ -70,6 +71,8 @@ export class Commander extends EventEmitter {
    */
   initialise() {
     this._bindSocket();
+    this._sendCommand(ControlCommandEnum.command);
+
     this._initialised = true;
   }
 
@@ -78,7 +81,7 @@ export class Commander extends EventEmitter {
    * @param command
    * @param params
    */
-  async control(command: ControlCommand, params?: Array<string | number>) {
+  async control(command: ControlCommandEnum, params?: Array<string | number>) {
     return this._sendCommand(command, params);
   }
 
@@ -87,7 +90,7 @@ export class Commander extends EventEmitter {
    * @param command
    * @param params
    */
-  async set(command: SetCommand, params?: Array<string | number>) {
+  async set(command: SetCommandEnum, params?: Array<string | number>) {
     return this._sendCommand(command, params);
   }
 
@@ -96,32 +99,33 @@ export class Commander extends EventEmitter {
    * @param command
    * @param params
    */
-  async read(command: ReadCommand, params?: Array<string | number>) {
+  async read(command: ReadCommandEnum, params?: Array<string | number>) {
     return this._sendCommand(command, params, true);
   }
 
   /**
    *
-   * @param command
+   * @param commandType
    * @param params
    * @param readCommand
    */
-  private async _sendCommand(command: Command, params?: Array<string | number>, readCommand: boolean = false) {
-    if (this._initialised === false) {
-      throw new Error('Not initialised!');
-    }
+  private async _sendCommand(commandType: CommandType, params?: Array<string | number>, readCommand: boolean = false) {
+    const command = new Command(commandType, params, readCommand);
 
-    const commandString = command + (readCommand === true ? '?' : '');
-
-    return new Promise((resolve, reject) => {
-      // @TODO: Add queue
-      this._socket.send(commandString, this._remotePort, this._remoteAddress, (err) => {
+      return new Promise((resolve, reject) => {
+        // @TODO: Add queue
+      this._socket.send(command.toString(), this._remotePort, this._remoteAddress, (err) => {
         if (err) {
           return reject(err);
         }
+        console.log(`>> [${this._remoteAddress}:${this._remotePort}] ${command.toString()}`)
         resolve();
       });
     });
+  }
+
+  private async _enqueueCommand(command: CommandType, params?: Array<string | number>) {
+
   }
 
   /**
@@ -130,7 +134,7 @@ export class Commander extends EventEmitter {
    */
   private _bindSocket(): void {
     this._socket.on('error', (err) => {
-      this.emit(CommanderEvent.error, err);
+      this.emit(CommanderEventEnum.error, err);
       this._socket.close();
     });
 

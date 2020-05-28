@@ -1,9 +1,9 @@
 {
-  "name": "@node-tello/commander",
+  "name": "@node-tello/ensign",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
-  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/commander#readme",
+  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/ensign#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "publishConfig": {
@@ -30,6 +30,8 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@node-tello/cadet": "^0.0.0"
-  }
+    "datagram-stream": "^1.1.1",
+    "stream-split": "^1.1.0"
+  },
+  "devDependencies": {}
 }

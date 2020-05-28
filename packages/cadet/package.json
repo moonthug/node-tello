@@ -1,9 +1,9 @@
 {
-  "name": "@node-tello/commander",
+  "name": "@node-tello/cadet",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
-  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/commander#readme",
+  "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/cadet#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "publishConfig": {
@@ -29,7 +29,6 @@
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
     "watch": "tsc --watch"
   },
-  "dependencies": {
-    "@node-tello/cadet": "^0.0.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

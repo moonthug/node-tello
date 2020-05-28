@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 
 import { Commander } from './Commander';
-import { ControlCommand } from './enums/ControlCommand';
-import { SetCommand } from './enums/SetCommand';
-import { ReadCommand } from './enums/ReadCommand';
+import { ControlCommandEnum } from './enums/ControlCommand';
+import { SetCommandEnum } from './enums/SetCommand';
+import { ReadCommandEnum } from './enums/ReadCommand';
 
 describe('Commander', () => {
   afterEach(() => {
@@ -96,7 +96,7 @@ describe('Commander', () => {
     it('should call _sendCommand with the correct arguments', () => {
       // @ts-ignore
       const spy = sinon.stub(commander, '_sendCommand');
-      commander.control(ControlCommand.takeoff);
+      commander.control(ControlCommandEnum.takeoff);
       expect(spy.callCount).to.eql(1);
       expect(spy.calledWith('takeoff')).to.equal(true);
     });
@@ -122,7 +122,7 @@ describe('Commander', () => {
     it('should call _sendCommand with the correct arguments', () => {
       // @ts-ignore
       const spy = sinon.stub(commander, '_sendCommand');
-      commander.set(SetCommand.speed);
+      commander.set(SetCommandEnum.speed);
       expect(spy.callCount).to.eql(1);
       expect(spy.calledWith('speed')).to.equal(true);
     });
@@ -149,7 +149,7 @@ describe('Commander', () => {
     it('should call _sendCommand with the correct arguments', () => {
       // @ts-ignore
       const spy = sinon.stub(commander, '_sendCommand');
-      commander.read(ReadCommand.battery);
+      commander.read(ReadCommandEnum.battery);
       expect(spy.callCount).to.eql(1);
       expect(spy.calledWith('battery')).to.equal(true);
     });
