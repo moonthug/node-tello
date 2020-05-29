@@ -40,13 +40,13 @@ export class Commander extends EventEmitter {
   /**
    *
    */
-  constructor (options: ICommanderOptions) {
+  constructor (options?: ICommanderOptions) {
     super();
 
     const defaults = {
       localAddress: '0.0.0.0',
       localPort: 8889,
-      remoteAddress: '127.0.0.1',
+      remoteAddress: '192.168.1.10',
       remotePort: 8889
     };
 
@@ -125,6 +125,10 @@ export class Commander extends EventEmitter {
   }
 
   private async _enqueueCommand(command: CommandType, params?: Array<string | number>) {
+
+  }
+
+  private async _dequeueNextCommand() {
 
   }
 

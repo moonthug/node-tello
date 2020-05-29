@@ -59,7 +59,7 @@ export class Drone extends EventEmitter {
     this.ensign = new Ensign({
       localPort: localOptions.videoPort,
       outStream: fs.createWriteStream('./output.mp4')
-  });
+    });
 
     this.cadet.on('state', (state: State) => this.emit(DroneEventEnum.state, state));
 
