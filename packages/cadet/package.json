@@ -1,7 +1,7 @@
 {
   "name": "@node-tello/cadet",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "description": "A package for receiving state updates from the Tello Drone",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/cadet#readme",
   "license": "ISC",

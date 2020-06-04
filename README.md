@@ -2,6 +2,11 @@
 
 This is the lerna monorepo for the `@node-tello` NPM organisation.
 
+- `@node-tello/drone` - Sends commands to the Drone
+- `@node-tello/commander` - Sends commands to the Drone
+- `@node-tello/cadet` - Receives state updates from the Drone
+- `@node-tello/ensign` - [Experimental] Take photos and recieve a usable video stream from the Tello cam
+
 ### Packages
 - [Drone](https://github.com/moonthug/node-tello/tree/master/packages/drone)
 - [Commander](https://github.com/moonthug/node-tello/tree/master/packages/commander)
@@ -12,3 +17,8 @@ This is the lerna monorepo for the `@node-tello` NPM organisation.
 ### Examples
 - [Drone Example](https://github.com/moonthug/node-tello/tree/master/examples/drone-example)
 - [Ensign Example](https://github.com/moonthug/node-tello/tree/master/examples/ensign-example)
+
+
+### Future
+- Browser integration
+- React Wrapper

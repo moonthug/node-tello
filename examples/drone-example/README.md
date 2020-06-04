@@ -1,8 +1,5 @@
 # `@node-tello/drone-example`
 
-Currently broken :(
-
-)
 ## Usage
 
 ```

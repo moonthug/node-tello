@@ -1,7 +1,7 @@
 {
   "name": "@node-tello/commander",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "description": "A package for sending commands async commands to the Tello Drone",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/commander#readme",
   "license": "ISC",
