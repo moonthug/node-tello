@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 
 import { Commander, ControlCommandEnum, ReadCommandEnum, SetCommandEnum } from '@node-tello/commander';
 import { Cadet, State } from '@node-tello/cadet';
-import { Ensign } from '@node-tello/ensign';
+// import { Ensign } from '@node-tello/ensign';
 
 import { DroneEventEnum } from './enums/DroneEvent';
 
@@ -26,7 +26,7 @@ export class Drone extends EventEmitter {
    */
   private readonly commander: Commander;
   private readonly cadet: Cadet;
-  private readonly ensign: Ensign;
+  // private readonly ensign: Ensign;
 
   /**
    *
@@ -55,9 +55,9 @@ export class Drone extends EventEmitter {
       localPort: localOptions.statePort
     });
 
-    this.ensign = new Ensign({
-      localPort: localOptions.videoPort
-    });
+    // this.ensign = new Ensign({
+    //   localPort: localOptions.videoPort
+    // });
   }
 
   /**
