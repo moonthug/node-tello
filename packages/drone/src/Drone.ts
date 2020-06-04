@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import fs from 'fs';
 
 import { Commander, ControlCommandEnum, ReadCommandEnum, SetCommandEnum } from '@node-tello/commander';
 import { Cadet, State } from '@node-tello/cadet';
@@ -57,14 +56,25 @@ export class Drone extends EventEmitter {
     });
 
     this.ensign = new Ensign({
-      localPort: localOptions.videoPort,
-      outStream: fs.createWriteStream('./output.mp4')
+      localPort: localOptions.videoPort
     });
+  }
 
+  /**
+   *
+   */
+  async initalise() {
     this.cadet.on('state', (state: State) => this.emit(DroneEventEnum.state, state));
 
     this.cadet.initialise();
-    this.commander.initialise();
+    await this.commander.initialise();
+  }
+
+  /**
+   *
+   */
+  disconnect() {
+    this.commander.destroy();
   }
 
   // Control

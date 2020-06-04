@@ -2,12 +2,12 @@ import { EventEmitter } from 'events';
 import { createSocket, Socket } from 'dgram';
 
 import { H264Decoder } from 'h264decoder';
-const Split = require('stream-split');
+// const Split = require('stream-split');
 
 import { RGB2PPM, YUV2RBG } from './utils/colours';
 import { EnsignEventEnum } from './enums/EnsignEvent';
 
-const NALSeparator = new Buffer([0, 0, 0, 1]);
+// const NALSeparator = new Buffer([0, 0, 0, 1]);
 
 /**
  *

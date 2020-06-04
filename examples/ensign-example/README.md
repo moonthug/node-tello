@@ -1,11 +1,3 @@
-# `@node-tello/ensign`
+# `@node-tello/ensign-example`
 
-> TODO: description
-
-## Usage
-
-```
-import { Ensign } from '@node-tello/ensign';
-
-// TODO: DEMONSTRATE API
-```
+Currently broken :(

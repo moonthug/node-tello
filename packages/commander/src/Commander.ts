@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { createSocket, Socket } from 'dgram';
 
 import { Command } from './Command';
+import { Response } from './Response';
 import { CommanderEventEnum } from './enums/CommanderEvent';
 import { ReadCommandEnum } from './enums/ReadCommand';
 import { SetCommandEnum } from './enums/SetCommand';
@@ -18,8 +19,10 @@ export interface ICommanderOptions {
   localPort?: number;
 }
 
-
-
+export interface ISendCommandOptions {
+  readCommand?: boolean;
+  timeout?: number;
+}
 
 /**
  * 
@@ -69,20 +72,15 @@ export class Commander extends EventEmitter {
   /**
    *
    */
-  initialise() {
+  async initialise() {
     this._bindSocket();
-    this._sendCommand(ControlCommandEnum.command);
-
+    await this._sendCommand(ControlCommandEnum.command);
     this._initialised = true;
   }
 
-  /**
-   *
-   * @param command
-   * @param params
-   */
-  async control(command: ControlCommandEnum, params?: Array<string | number>) {
-    return this._sendCommand(command, params);
+  async destroy() {
+    this._socket.close();
+    this._socket.removeAllListeners()
   }
 
   /**
@@ -90,8 +88,9 @@ export class Commander extends EventEmitter {
    * @param command
    * @param params
    */
-  async set(command: SetCommandEnum, params?: Array<string | number>) {
-    return this._sendCommand(command, params);
+  async control(command: ControlCommandEnum, params?: Array<string | number>): Promise<boolean> {
+    const response = await this._sendCommand(command, params);
+    return response.success;
   }
 
   /**
@@ -99,37 +98,66 @@ export class Commander extends EventEmitter {
    * @param command
    * @param params
    */
-  async read(command: ReadCommandEnum, params?: Array<string | number>) {
-    return this._sendCommand(command, params, true);
+  async set(command: SetCommandEnum, params?: Array<string | number>): Promise<boolean> {
+    const response = await this._sendCommand(command, params);
+    return response.success;
+  }
+
+  /**
+   *
+   * @param command
+   * @param params
+   */
+  async read(command: ReadCommandEnum, params?: Array<string | number>): Promise<string> {
+    const response = await this._sendCommand(command, params, { readCommand: true });
+    return response.value;
   }
 
   /**
    *
    * @param commandType
    * @param params
-   * @param readCommand
+   * @param options
    */
-  private async _sendCommand(commandType: CommandType, params?: Array<string | number>, readCommand: boolean = false) {
-    const command = new Command(commandType, params, readCommand);
+  private async _sendCommand(
+    commandType: CommandType,
+    params?: Array<string | number>,
+    options?: ISendCommandOptions
+  ): Promise<Response> {
+    const localOptions = {
+      readCommand: false,
+      timeout: 2000,
+      ...options
+    };
 
-      return new Promise((resolve, reject) => {
-        // @TODO: Add queue
+    // Move to queue
+    const command = new Command(commandType, params, localOptions.readCommand);
+    return new Promise((resolve, reject) => {
       this._socket.send(command.toString(), this._remotePort, this._remoteAddress, (err) => {
         if (err) {
           return reject(err);
         }
-        console.log(`>> [${this._remoteAddress}:${this._remotePort}] ${command.toString()}`)
-        resolve();
+        console.log(`>> ${ command.toString() }`);
+      });
+
+      // const timeout = setInterval(() => {
+      //   return reject(new Error(`Command timed out: ${ command.toString() }...`));
+      // }, localOptions.timeout);
+
+      this._socket.once('message', (messageData: Buffer) => {
+        // clearInterval(timeout);
+
+        console.log(`<< ${ messageData.toString() }`);
+
+        const response = new Response(messageData);
+
+        if (response.success === false) {
+          return reject(new Error(`Tello Error: ${ response.error }`));
+        }
+
+        resolve(response);
       });
     });
-  }
-
-  private async _enqueueCommand(command: CommandType, params?: Array<string | number>) {
-
-  }
-
-  private async _dequeueNextCommand() {
-
   }
 
   /**
@@ -144,10 +172,6 @@ export class Commander extends EventEmitter {
 
     this._socket.on('close', () => {
       this._socket.close();
-    });
-
-    this._socket.on('message', (msg, rinfo) => {
-      console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
     });
 
     this._socket.on('listening', () => {
