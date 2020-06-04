@@ -1,6 +1,6 @@
 {
   "name": "@node-tello/ensign",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/ensign#readme",
@@ -32,6 +32,5 @@
   "dependencies": {
     "datagram-stream": "^1.1.1",
     "h264decoder": "^1.0.0"
-  },
-  "devDependencies": {}
+  }
 }

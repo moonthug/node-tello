@@ -1,6 +1,6 @@
 {
   "name": "@node-tello/cadet",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/cadet#readme",
@@ -28,7 +28,5 @@
     "test": "mocha -r ts-node/register src/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
     "watch": "tsc --watch"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }
