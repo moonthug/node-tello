@@ -2,10 +2,5 @@
 
 > TODO: description
 
-## Usage
-
-```
-import { Drone } from '@node-tello/drone';
-
-// TODO: DEMONSTRATE API
-```
+### Examples
+- [Drone Example](https://github.com/moonthug/node-tello/tree/master/examples/drone-example)
