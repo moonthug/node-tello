@@ -1,6 +1,6 @@
 {
   "name": "@node-tello/commander",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A package for sending commands async commands to the Tello Drone",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/commander#readme",
@@ -30,6 +30,6 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@node-tello/cadet": "^0.0.2"
+    "@node-tello/cadet": "^0.0.3"
   }
 }

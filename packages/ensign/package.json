@@ -1,6 +1,6 @@
 {
   "name": "@node-tello/ensign",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A package for taking pictures and receiving a usable video stream from the Tello Drone",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/ensign#readme",
