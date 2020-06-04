@@ -4,11 +4,7 @@ import { Drone, State } from '@node-tello/drone';
  *
  */
 const main = async () => {
-  const drone = new Drone({
-    address: '192.168.10.1',
-    commandPort: 8889,
-    statePort: 8890
-  });
+  const drone = new Drone();
 
   await drone.initalise();
 

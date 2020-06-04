@@ -2,11 +2,11 @@
 
 `@node-tello/drone` is a module for controlling a RyzeRobotics/DJI Tello drone.
 
-It consists of a high level interface wrapping 3 core modules whci are used for communication with the drone.
+It consists of a high level interface wrapping 3 core modules which are used for communication with the drone.
 
 - `@node-tello/commander` - Sends commands to the Drone
 - `@node-tello/cadet` - Receives state updates from the Drone
-- `@node-tello/ensign` - [Experimental] Take photos and recieve a usable video stream from the Tello cam
+- `@node-tello/ensign` - [Experimental] Take photos and receive a usable video stream from the Tello cam
 
 ## Monorepo
 - [Node Tello](https://github.com/moonthug/node-tello)
@@ -18,16 +18,37 @@ It consists of a high level interface wrapping 3 core modules whci are used for 
 
 ### Usage
 
-```
+```ts
 import { Drone, State } from '@node-tello/drone';
 
-const drone = new Drone({
-    address: '192.168.10.1',
-    commandPort: 8889,
-    statePort: 8890
-});
+const drone = new Drone();
 
 drone.on('state', (state: State) => {
+  return console.log(state.toString())
+});
+
+await drone.initalise();
+
+console.log('Get Battery Level');
+const batteryLevel = await drone.getBattery();
+console.log(batteryLevel);
+
+console.log('takeoff');
+await drone.takeoff();
+
+console.log('land');
+await drone.land();
+
+drone.disconnect();
+```
+
+Javascript
+```js
+const { Drone, State } = require( '@node-tello/drone');
+
+const drone = new Drone();
+
+drone.on('state', state => {
   return console.log(state.toString())
 });
 

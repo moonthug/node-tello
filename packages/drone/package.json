@@ -1,7 +1,7 @@
 {
   "name": "@node-tello/drone",
   "version": "0.0.2",
-  "description": "> TODO: description",
+  "description": "A package for controlling a Tello Drone",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/drone#readme",
   "license": "ISC",

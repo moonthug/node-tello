@@ -31,7 +31,7 @@ export class Drone extends EventEmitter {
   /**
    *
    */
-  constructor (options: IDroneOptions) {
+  constructor (options?: IDroneOptions) {
     super();
 
     const defaults = {
