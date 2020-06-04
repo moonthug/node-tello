@@ -1,6 +1,6 @@
 {
   "name": "ensign-example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
@@ -29,8 +29,8 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@node-tello/commander": "^0.0.1",
-    "@node-tello/ensign": "^0.0.1"
+    "@node-tello/commander": "^0.0.2",
+    "@node-tello/ensign": "^0.0.2"
   },
   "devDependencies": {
     "ts-node": "^8.10.2"

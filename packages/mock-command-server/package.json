@@ -1,6 +1,6 @@
 {
   "name": "@node-tello/mock-command-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "Alex Coulcher <alex@polyglot.rodeo>",
   "homepage": "https://github.com/moonthug/node-tello/tree/master/packages/mock-command-server#readme",
@@ -30,6 +30,6 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@node-tello/commander": "^0.0.1"
+    "@node-tello/commander": "^0.0.2"
   }
 }
