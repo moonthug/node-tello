@@ -11,12 +11,12 @@ It consists of a high level interface wrapping 3 core modules which are used for
 ## Monorepo
 - [Node Tello](https://github.com/moonthug/node-tello)
 
-### Dependencies
+## Dependencies
 - [Commander](https://github.com/moonthug/node-tello/tree/master/packages/commander)
 - [Cadet](https://github.com/moonthug/node-tello/tree/master/packages/cadet)
 - [Ensign](https://github.com/moonthug/node-tello/tree/master/packages/ensign)
 
-### Usage
+## Usage
 
 ```ts
 import { Drone, State } from '@node-tello/drone';
@@ -67,5 +67,5 @@ await drone.land();
 drone.disconnect();
 ```
 
-### Examples
+## Examples
 - [Drone Example](https://github.com/moonthug/node-tello/tree/master/examples/drone-example)
